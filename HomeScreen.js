@@ -1,11 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 
 class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>Home</Text>
+        <Button 
+          title = "todo로 이동"
+          onPress={() => this.props.navigation.navigate('Todo')}
+        />
       </View>
     );
   }
