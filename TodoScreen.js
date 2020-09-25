@@ -1,16 +1,27 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  StyleSheet, 
+  Text, 
+  View,
+  ScrollView, } from 'react-native';
 import { TextInput } from 'react-native-paper';
+
+//컴포넌트 임포트
+import TodoInsert from './components/TodoInsert'
+import TodoList from './components/TodoList'
 
 class TodoScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.appTitle}>Todo!</Text>
+
         <View style={styles.card}>
-          <TextInput style={styles.input} placeholder="Add an item!" />
+          <TodoInsert />
+          <TodoList />
+
         </View>
-    </View>
+      </View>
     );
   }
 }
@@ -31,7 +42,7 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#fff',
-    flex: 1,
+    flex: 1, //화면 전체를 덮어줌
     borderTopLeftRadius: 10, // to provide rounded corners
     borderTopRightRadius: 10, // to provide rounded corners
     marginLeft: 10,
