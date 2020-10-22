@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet, 
   Text, 
@@ -10,21 +10,36 @@ import { TextInput } from 'react-native-paper';
 import TodoInsert from './components/TodoInsert'
 import TodoList from './components/TodoList'
 
-class TodoScreen extends React.Component {
-  render() {
+//class TodoScreen extends React.Component {
+  //hook은 함수형 프로그래밍에서만 구현 가능함.
+  const TodoScreen = () => {
+  //render() {
+    //todos: {id: Number, textValue: string, checked: boolean }
+    const [todos, setTodos] = useState([]);
+
+    const addTodo = text => {
+      setTodos([
+        ...todos,
+        {id: Math.random().toString(),
+          textValue: text,
+          checked: false},
+      ]);
+    };
+
     return (
       <View style={styles.container}>
         <Text style={styles.appTitle}>Todo!</Text>
 
         <View style={styles.card}>
-          <TodoInsert />
-          <TodoList />
+          <TodoInsert onAddTodo = {addTodo} />
+          <TodoList todos = {todos} />
 
         </View>
       </View>
     );
   }
-}
+//}
+
 
 const styles = StyleSheet.create({
   container: {

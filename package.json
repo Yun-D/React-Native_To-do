@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "preandroid": "npx jetify",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -14,13 +15,13 @@
     "react-native": "0.63.2",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-paper": "^4.2.0",
-    "react-native-reanimated": "^1.13.0",
+    "react-native-reanimated": "^1.13.1",
     "react-native-screen": "^1.0.1",
     "react-native-screens": "^2.11.0",
     "react-native-vector-icons": "^7.1.0",
-    "react-navigation": "^4.4.0",
-    "react-navigation-material-bottom-tabs": "^2.3.0",
-    "react-navigation-tabs": "^2.9.0"
+    "react-navigation": "^4.4.2",
+    "react-navigation-material-bottom-tabs": "^2.3.2",
+    "react-navigation-tabs": "^2.9.2"
   },
   "devDependencies": {
     "@babel/core": "7.11.6",
@@ -29,6 +30,7 @@
     "babel-jest": "25.5.1",
     "eslint": "6.8.0",
     "jest": "25.5.4",
+    "jetifier": "^1.6.6",
     "metro-react-native-babel-preset": "0.59.0",
     "react-test-renderer": "16.13.1"
   },

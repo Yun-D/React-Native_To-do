@@ -4,10 +4,14 @@ import React from 'react';
 import {StyleSheet, ScrollView, Text} from 'react-native';
 import TodoListItem from './TodoListItem'
 
-const TodoList = () => {
+//map()으로 todos에 담긴 아이템을 하나씩 TodoListItem 컴포넌트로 전달.
+//각각 아이템에 textValue, id, checked 키와 밸류가 담김
+const TodoList = ({todos}) => {
   return (
     <ScrollView contentContainerStyle={styles.listContainer}>
-      <TodoListItem />
+      {todos.map(todo => (
+        <TodoListItem key={todo.id} {...todo} />
+      ))}
     </ScrollView>
   );
 };
