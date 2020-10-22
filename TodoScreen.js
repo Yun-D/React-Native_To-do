@@ -26,13 +26,18 @@ import TodoList from './components/TodoList'
       ]);
     };
 
+    //각 아이템의 고유 id를 받아와, 해당 아이디를 가진 아이템 객체만 제외하고 새로운 배열을 만듦.
+    const onRemove = id => e => {
+      setTodos(todos.filter(todo => todo.id !== id));
+    };
+
     return (
       <View style={styles.container}>
         <Text style={styles.appTitle}>Todo!</Text>
 
         <View style={styles.card}>
           <TodoInsert onAddTodo = {addTodo} />
-          <TodoList todos = {todos} />
+          <TodoList todos = {todos} onRemove={onRemove} />
 
         </View>
       </View>

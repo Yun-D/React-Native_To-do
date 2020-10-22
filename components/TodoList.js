@@ -6,11 +6,11 @@ import TodoListItem from './TodoListItem'
 
 //map()으로 todos에 담긴 아이템을 하나씩 TodoListItem 컴포넌트로 전달.
 //각각 아이템에 textValue, id, checked 키와 밸류가 담김
-const TodoList = ({todos}) => {
+const TodoList = ({todos, onRemove}) => {
   return (
-    <ScrollView contentContainerStyle={styles.listContainer}>
+    <ScrollView contentContainerStyle={ styles.listContainer}>
       {todos.map(todo => (
-        <TodoListItem key={todo.id} {...todo} />
+        <TodoListItem key={todo.id} {...todo} onRemove={onRemove} />
       ))}
     </ScrollView>
   );
