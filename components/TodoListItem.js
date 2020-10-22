@@ -6,18 +6,24 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const TodoListItem = ({textValue, id, checked, onRemove}) => {
+const TodoListItem = ({textValue, id, checked, onRemove, onToggle}) => {
   return (
     <View style={styles.container}>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPressOut={onToggle(id)}>
+          { checked ? ( //체크 되었다면(true라면) 체크 표시된 토글버튼 보여줌
             <View style={styles.completeCircle}>
-                <Icon name="circledowno" size={25} color="#10bdef" />
+              <Icon name="circledowno" size={25} color="#10bdef" />
             </View>
+          ) : ( //false라면 체크 해제된 토글버튼
+            <View style = {styles.circle} />
+          )}
         </TouchableOpacity>
 
-        <Text style={[styles.text, styles.strikeText]}>
-          {textValue}
+        <Text style={[
+          styles.text, //checked 속성이 true면 취소선, 아니면 안취소선~
+          checked ? styles.strikeText : styles.unstrikeText, ]}>
+          {textValue} 
         </Text>
 
         <TouchableOpacity style={styles.buttonContainer}>
@@ -48,8 +54,18 @@ const styles = StyleSheet.create({
     width: 100,
   },
 
-  //완료한 목록을 표시해주는 스타일
+  //완료한 목록. 체크 된 토글 동그라미
   completeCircle: {
+    marginRight: 20,
+    marginLeft: 20,
+  },
+  //체크 안 된 토글 동그라미
+  circle: { 
+    width: 25,
+    height: 25,
+    borderRadius: 15,
+    borderColor: '#10bdef',
+    borderWidth: 2,
     marginRight: 20,
     marginLeft: 20,
   },

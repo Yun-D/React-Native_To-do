@@ -26,9 +26,19 @@ import TodoList from './components/TodoList'
       ]);
     };
 
-    //각 아이템의 고유 id를 받아와, 해당 아이디를 가진 아이템 객체만 제외하고 새로운 배열을 만듦.
+    //각 아이템의 고유 id를 받아와, 해당 아이디를 가진 아이템 객체만 제외하고 새로운 배열을 만듦. (해당 아이디 것을 삭제해줌)
     const onRemove = id => e => {
       setTodos(todos.filter(todo => todo.id !== id));
+    };
+
+    //토글버튼을 누르면 체크 표시, 더 누르면 해제
+    //아이템의 id를 받아와 해당 아이템의 checked 속성값을 반대로 변경
+    const onToggle = id => e => {
+      setTodos(
+        todos.map(todo =>
+          todo.id === id ? {...todo, checked: !todo.checked} : todo,
+          ),
+      );
     };
 
     return (
@@ -37,7 +47,7 @@ import TodoList from './components/TodoList'
 
         <View style={styles.card}>
           <TodoInsert onAddTodo = {addTodo} />
-          <TodoList todos = {todos} onRemove={onRemove} />
+          <TodoList todos = {todos} onRemove={onRemove} onToggle={onToggle} />
 
         </View>
       </View>
